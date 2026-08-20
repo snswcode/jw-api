@@ -1,4 +1,4 @@
-import { timingSafeEqual, createHash } from 'node:crypto'
+import { createHash, timingSafeEqual } from 'node:crypto'
 
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
@@ -15,7 +15,7 @@ export default defineEventHandler((event) => {
   if (!timingSafeEqual(secretBuf, providedBuf)) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Unauthorized',
+      statusMessage: 'Unauthorized'
     })
   }
 })
