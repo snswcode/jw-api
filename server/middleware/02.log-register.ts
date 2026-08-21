@@ -5,14 +5,16 @@ export default fromNodeMiddleware(
     autoLogging: false,
     genReqId: (req) => req.headers['x-tracing-id'] || req.id,
     level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
-    transport: {
-      options: {
-        colorize: process.env.NODE_ENV !== 'production',
-        ignore: 'req,res,responseTime,pid,hostname',
-        messageFormat: '[reqId:{req.id}] - {msg}',
-        translateTime: 'SYS:standard'
-      },
-      target: 'pino-pretty'
-    }
+    transport: process.env.NODE_ENV !== 'production'
+      ? {
+          options: {
+            colorize: true,
+            ignore: 'req,res,responseTime,pid,hostname',
+            messageFormat: '[reqId:{req.id}] - {msg}',
+            translateTime: 'SYS:standard'
+          },
+          target: 'pino-pretty'
+        }
+      : undefined
   })
 )
