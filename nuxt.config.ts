@@ -25,12 +25,6 @@ export default defineNuxtConfig({
   nitro: {
     database,
     experimental: { database: true, openAPI: true },
-    logger: {
-      options: {
-        transport: undefined,
-      },
-    },
-    logLevel: 0,
     openAPI: {
       meta: { description, title, version },
       production: 'prerender',
