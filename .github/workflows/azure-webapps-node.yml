@@ -43,6 +43,7 @@ jobs:
           cd .output
           zip -r ../release.zip .
           cd ..
+          zip release.zip package.json
 
       - name: ✅ Upload artifact
         uses: actions/upload-artifact@v4.6.2
