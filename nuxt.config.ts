@@ -26,6 +26,11 @@ export default defineNuxtConfig({
     database,
     experimental: { database: true, openAPI: true },
     logLevel: 0,
+    logger: {
+        options: {
+            transport: undefined
+        }
+    },
     openAPI: {
       meta: { description, title, version },
       production: 'prerender',
